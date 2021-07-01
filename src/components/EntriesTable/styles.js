@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin-top: 60px;
+  overflow-x: auto;
+  display: block;
 `;
 
 export const Table = styled.table`
   width: 100%;
+
   thead tr {
     text-align: left;
     text-transform: uppercase;

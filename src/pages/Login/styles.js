@@ -29,7 +29,7 @@ export const InputWrapper = styled.div`
   align-items: center;
 
   svg {
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
   }
 `;

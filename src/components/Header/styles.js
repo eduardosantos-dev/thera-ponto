@@ -11,13 +11,22 @@ export const BrandWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    h1 {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
 `;
 
 export const UserName = styled.h1`
   color: white;
   font-weight: bold;
-  font-size: 30px;
-  margin-left: 100px;
+  font-size: 2rem;
+  margin-left: 6.25rem;
 `;
 
 export const LogoutButton = styled.button`

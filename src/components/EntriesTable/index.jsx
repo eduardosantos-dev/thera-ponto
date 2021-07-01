@@ -6,12 +6,22 @@ import { useTimesheet } from "../../contexts/timesheet";
 export default function EntriesTable() {
   const context = useTimesheet();
 
-  const formatDateTime = (dateString) => {
-    return dateString ? new Date(dateString).toLocaleString() : "";
+  const formatTime = (dateString) => {
+    return dateString
+      ? new Date(dateString).toLocaleTimeString(
+          "pt-BR",
+          { timeZone: "UTC" },
+          {
+            timeStyle: "short",
+          }
+        )
+      : "";
   };
 
   const formatDate = (dateString) => {
-    return dateString ? new Date(dateString).toLocaleDateString() : "";
+    return dateString
+      ? new Date(dateString).toLocaleDateString("pt-BR", { timeZone: "UTC" })
+      : "";
   };
 
   return (
@@ -30,13 +40,13 @@ export default function EntriesTable() {
         <tbody>
           {context.timesheet &&
             context.timesheet.map((item) => (
-              <tr>
+              <tr key={item.id}>
                 <td>{formatDate(item.start)}</td>
-                <td>{formatDateTime(item.start)}</td>
-                <td>{formatDateTime(item.startLunch)}</td>
-                <td>{formatDateTime(item.endLunch)}</td>
-                <td>{formatDateTime(item.end)}</td>
-                <td>{item.totalTime}</td>
+                <td>{formatTime(item.start)}</td>
+                <td>{formatTime(item.startLunch)}</td>
+                <td>{formatTime(item.endLunch)}</td>
+                <td>{formatTime(item.end)}</td>
+                <td>{item.totalWorkingTime}</td>
               </tr>
             ))}
         </tbody>
