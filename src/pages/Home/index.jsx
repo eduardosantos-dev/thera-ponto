@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from "react";
 import { Container, TimeWrapper, EntriesButtonsWrapper } from "./styles";
 import Header from "../../components/Header";

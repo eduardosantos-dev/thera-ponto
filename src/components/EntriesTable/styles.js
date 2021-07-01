@@ -13,12 +13,14 @@ export const Table = styled.table`
   }
 
   tbody td {
-    background-color: white;
+    padding: 10px;
   }
 
   tbody tr {
+    background-color: #fff;
+
     &:nth-child(even) {
-      background-color: red;
+      background-color: #e8e8e8;
     }
   }
 `;

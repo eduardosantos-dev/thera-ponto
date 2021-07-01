@@ -1,7 +1,19 @@
+// @ts-nocheck
 import React from "react";
 import { Container, Table } from "./styles";
+import { useTimesheet } from "../../contexts/timesheet";
 
 export default function EntriesTable() {
+  const context = useTimesheet();
+
+  const formatDateTime = (dateString) => {
+    return dateString ? new Date(dateString).toLocaleString() : "";
+  };
+
+  const formatDate = (dateString) => {
+    return dateString ? new Date(dateString).toLocaleDateString() : "";
+  };
+
   return (
     <Container>
       <Table>
@@ -16,30 +28,17 @@ export default function EntriesTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Tablescon</td>
-            <td>9 April 2019</td>
-            <td>East Annex</td>
-            <td>East Annex</td>
-            <td>East Annex</td>
-            <td>East Annex</td>
-          </tr>
-          <tr>
-            <td>Capstone Data</td>
-            <td>19 May 2019</td>
-            <td>205 Gorgas</td>
-            <td>205 Gorgas</td>
-            <td>205 Gorgas</td>
-            <td>205 Gorgas</td>
-          </tr>
-          <tr>
-            <td>Tuscaloosa D3</td>
-            <td>29 June 2019</td>
-            <td>Github</td>
-            <td>Github</td>
-            <td>Github</td>
-            <td>Github</td>
-          </tr>
+          {context.timesheet &&
+            context.timesheet.map((item) => (
+              <tr>
+                <td>{formatDate(item.start)}</td>
+                <td>{formatDateTime(item.start)}</td>
+                <td>{formatDateTime(item.startLunch)}</td>
+                <td>{formatDateTime(item.endLunch)}</td>
+                <td>{formatDateTime(item.end)}</td>
+                <td>{item.totalTime}</td>
+              </tr>
+            ))}
         </tbody>
       </Table>
     </Container>
